@@ -202,7 +202,7 @@ export const projects: Project[] = [
 ];
 
 export const categories = [
-  { id: 'all', label: 'Tous' },
+  { id: 'all', label: 'Tout' },
   { id: 'branding', label: 'Branding' },
   { id: 'social-media', label: 'Social Media' },
   { id: 'site-web', label: 'Site Web' },
@@ -220,4 +220,13 @@ export function getRelatedProjects(currentSlug: string, limit: number = 3): Proj
   return projects
     .filter((p) => p.slug !== currentSlug && p.category === current.category)
     .slice(0, limit);
+}
+
+export function getAdjacentProjects(currentSlug: string) {
+  const index = projects.findIndex((project) => project.slug === currentSlug);
+  if (index < 0) return { previous: undefined, next: undefined };
+  return {
+    previous: projects[(index - 1 + projects.length) % projects.length],
+    next: projects[(index + 1) % projects.length],
+  };
 }

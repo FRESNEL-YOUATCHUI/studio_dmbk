@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { projects, services } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://dmbkstudio.com';
@@ -17,16 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  // Add portfolio project pages
-  const projectRoutes = [
-    '/portfolio/afrostyle-branding',
-    '/portfolio/techstart-website',
-    '/portfolio/savannah-social',
-    '/portfolio/zenith-app',
-    '/portfolio/ngonie-branding',
-    '/portfolio/bantou-events',
-    '/portfolio/moringa-social',
-    '/portfolio/ecobank-dashboard',
+  const detailRoutes = [
+    ...projects.map(({ slug }) => `/portfolio/${slug}`),
+    ...services.map(({ slug }) => `/services/${slug}`),
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -34,5 +28,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...routes, ...projectRoutes];
+  return [...routes, ...detailRoutes];
 }

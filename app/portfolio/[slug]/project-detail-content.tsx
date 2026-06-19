@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import { staggerContainer, staggerItem, slideUp } from '@/lib/animations';
-import { Project, getRelatedProjects } from '@/lib/data';
+import { Project, getAdjacentProjects } from '@/lib/data';
 import { Button } from '@/components/ui/cursor';
 
 interface ProjectDetailContentProps {
@@ -20,7 +20,7 @@ const categoryLabels: Record<string, string> = {
 };
 
 export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
-  const relatedProjects = getRelatedProjects(project.slug, 2);
+  const { previous, next } = getAdjacentProjects(project.slug);
 
   return (
     <>
@@ -166,10 +166,19 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
 
               <motion.div variants={staggerItem}>
                 <h3 className="text-sm font-medium uppercase tracking-wider text-brand-gold mb-4">
-                  Mission
+                  Objectif
                 </h3>
                 <p className="text-lg text-brand-gray leading-relaxed">
                   {project.mission}
+                </p>
+              </motion.div>
+
+              <motion.div variants={staggerItem}>
+                <h3 className="text-sm font-medium uppercase tracking-wider text-brand-gold mb-4">
+                  Processus
+                </h3>
+                <p className="text-lg text-brand-gray leading-relaxed">
+                  Recherche, exploration créative, prototypage puis déploiement : chaque étape a été validée avec le client pour garder une direction claire.
                 </p>
               </motion.div>
 
@@ -240,8 +249,8 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
         </div>
       </section>
 
-      {/* Related Projects */}
-      {relatedProjects.length > 0 && (
+      {/* Previous / Next projects */}
+      {previous && next && (
         <section className="py-24 md:py-32 bg-brand-white">
           <div className="container mx-auto px-6">
             <motion.div
@@ -251,7 +260,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
               className="flex justify-between items-center mb-12"
             >
               <h2 className="text-2xl md:text-3xl font-display text-brand-black">
-                Projets similaires
+                Continuer à explorer
               </h2>
               <Link
                 href="/portfolio"
@@ -263,7 +272,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              {relatedProjects.map((related, index) => (
+              {[previous, next].map((related, index) => (
                 <motion.div
                   key={related.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -288,7 +297,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
                           {categoryLabels[related.category]}
                         </span>
                         <h3 className="text-white text-xl font-display">
-                          {related.title}
+                          {index === 0 ? '← ' : ''}{related.title}{index === 1 ? ' →' : ''}
                         </h3>
                       </div>
                     </div>

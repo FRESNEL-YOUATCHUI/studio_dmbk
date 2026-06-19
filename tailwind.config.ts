@@ -11,12 +11,12 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          black: '#0D0D0D',
-          white: '#FAFAF8',
-          gray: '#8C8C8C',
-          gold: '#B68C45',
-          'gold-light': '#D4A96A',
-          'gold-dark': '#8B6914',
+          black: '#171717',
+          white: '#FFF8EF',
+          gray: '#68635D',
+          gold: '#FF5D2E',
+          'gold-light': '#FFD447',
+          'gold-dark': '#D94218',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

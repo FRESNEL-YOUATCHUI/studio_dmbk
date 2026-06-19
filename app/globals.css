@@ -63,9 +63,9 @@
     scroll-behavior: smooth;
   }
 
-  body {
-    background-color: #FAFAF8;
-    color: #0D0D0D;
+body {
+    background-color: #FFF8EF;
+    color: #171717;
     font-family: var(--font-inter);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -75,6 +75,31 @@
     font-family: var(--font-playfair);
     font-weight: 500;
   }
+}
+
+@layer components {
+  .creative-hero { position: relative; background: #fff8ef; }
+  .eyebrow { font-size: .82rem; font-weight: 900; text-transform: uppercase; letter-spacing: .14em; }
+  .mega-title { font-family: var(--font-inter); font-size: clamp(4rem, 9vw, 9rem); font-weight: 900; line-height: .88; letter-spacing: -.075em; }
+  .mega-title span { color: #ff5d2e; }
+  .creative-button { display: inline-flex; align-items: center; justify-content: center; gap: .7rem; padding: 1rem 1.35rem; border: 2px solid #171717; border-radius: 999px; background: #171717; color: white; font-weight: 900; box-shadow: 5px 5px 0 #ff5d2e; transition: transform .2s, box-shadow .2s; }
+  .creative-button:hover { transform: translate(3px,3px); box-shadow: 2px 2px 0 #ff5d2e; }
+  .service-card-premium { border: 3px solid #171717; border-radius: 34px; padding: 1rem; background: white; box-shadow: 10px 10px 0 #171717; transform-style: preserve-3d; transition: box-shadow .3s; }
+  .service-card-premium:nth-child(4n+2) { background: #ffd6e0; }
+  .service-card-premium:nth-child(4n+3) { background: #dcecff; }
+  .service-card-premium:nth-child(4n+4) { background: #d9f4df; }
+  .shape { position:absolute; border:3px solid #171717; pointer-events:none; }
+  .shape-a { width:90px; height:90px; border-radius:50%; background:#ffd447; right:4%; top:15%; }
+  .shape-b { width:85px; height:85px; background:#ff8fab; left:3%; bottom:8%; transform:rotate(18deg); }
+}
+
+@media (max-width: 768px) {
+  .mega-title { font-size: clamp(3.25rem, 17vw, 5rem); }
+  .shape { opacity: .45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
 @layer utilities {

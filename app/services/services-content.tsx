@@ -1,163 +1,42 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Image as ImageIcon, Palette, Users, Monitor, Check } from 'lucide-react';
-import { SectionHeader } from '@/components/ui/section-header';
-import { Button } from '@/components/ui/cursor';
-import { staggerContainer, staggerItem, slideUp } from '@/lib/animations';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Clock } from 'lucide-react';
 import { services } from '@/lib/data';
-
-const iconMap = {
-  Image: ImageIcon,
-  Palette: Palette,
-  Users: Users,
-  Monitor: Monitor,
-};
 
 export function ServicesPageContent() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pb-24 bg-brand-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={slideUp}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-brand-gold/10 text-brand-gold text-sm font-medium rounded-full mb-6">
-              Nos Services
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display text-brand-black mb-6">
-              Des expertises au service de{' '}
-              <span className="text-brand-gold">votre succès</span>
-            </h1>
-            <p className="text-lg text-brand-gray leading-relaxed max-w-2xl mx-auto">
-              De la création visuelle à la stratégie digitale, nous vous accompagnons à chaque étape de votre développement avec des solutions sur mesure.
-            </p>
-          </motion.div>
+      <section className="creative-hero pt-36 pb-20 px-6 overflow-hidden">
+        <div className="container mx-auto relative z-10">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="eyebrow">Ce que nous faisons</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1 }} className="mega-title max-w-5xl">
+            Des idées qui prennent <span>forme.</span>
+          </motion.h1>
+          <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed">Chaque offre est une base modulable. Les contenus ci-dessous viennent d’un seul fichier de données : ajoutez un service, sa page existe automatiquement.</p>
         </div>
+        <div className="shape shape-a" /><div className="shape shape-b" />
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 md:py-24 bg-brand-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            className="space-y-20 md:space-y-32"
-          >
-            {services.map((service, index) => {
-              const IconComponent = iconMap[service.icon as keyof typeof iconMap];
-              const isEven = index % 2 === 0;
-
-              return (
-                <motion.div
-                  key={service.id}
-                  id={service.id}
-                  variants={staggerItem}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${
-                    !isEven ? 'lg:flex-row-reverse' : ''
-                  }`}
-                >
-                  {/* Image */}
-                  <div className={`relative ${!isEven ? 'lg:order-2' : ''}`}>
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                      <Image
-                        src={`https://images.pexels.com/photos/${
-                          index === 0
-                            ? '5653796/pexels-photo-5653796'
-                            : index === 1
-                            ? '6311590/pexels-photo-6311590'
-                            : index === 2
-                            ? '270348/pexels-photo-270348'
-                            : '3861969/pexels-photo-3861969'
-                        }.jpeg?auto=compress&cs=tinysrgb&w=800`}
-                        alt={service.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-brand-black/30 to-transparent" />
-                    </div>
-                    {/* Decorative element */}
-                    <div className="absolute -bottom-4 -right-4 lg:-bottom-8 lg:-right-8 w-32 h-32 bg-brand-gold/20 rounded-lg -z-10" />
-                  </div>
-
-                  {/* Content */}
-                  <div className={!isEven ? 'lg:order-1' : ''}>
-                    <div className="inline-flex items-center space-x-2 text-brand-gold mb-4">
-                      {IconComponent && <IconComponent className="w-5 h-5" />}
-                      <span className="text-sm font-medium uppercase tracking-wider">
-                        {service.delivery}
-                      </span>
-                    </div>
-
-                    <h2 className="text-3xl md:text-4xl font-display text-brand-black mb-4">
-                      {service.title}
-                    </h2>
-
-                    <p className="text-lg text-brand-gray leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-
-                    {/* Features */}
-                    <ul className="space-y-3 mb-8">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-start space-x-3">
-                          <div className="w-5 h-5 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <Check className="w-3 h-3 text-brand-gold" />
-                          </div>
-                          <span className="text-brand-gray">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Price & CTA */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                      <div>
-                        <span className="text-sm text-brand-gray block">Tarif</span>
-                        <span className="text-2xl font-display font-medium text-brand-black">
-                          {service.price}
-                        </span>
-                      </div>
-                      <Button href="/devis" variant="secondary" size="md">
-                        Me contacter
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-brand-black">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={slideUp}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display text-brand-white mb-6">
-              Besoin d&apos;un accompagnement personnalisé ?
-            </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto mb-10">
-              Chaque projet est unique. Discutons de vos besoins pour créer une solution sur mesure.
-            </p>
-            <Button href="/devis" variant="secondary" size="lg">
-              Demander un devis gratuit
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </motion.div>
+      <section className="py-20 px-6 bg-[#fff8ef]">
+        <div className="container mx-auto grid md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <motion.article key={service.slug} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ delay: (index % 2) * .08 }} whileHover={{ y: -8, rotateX: 1.5, rotateY: index % 2 ? -1.5 : 1.5 }} className="service-card-premium group">
+              <Link href={`/services/${service.slug}`} className="block h-full" aria-label={`Découvrir ${service.title}`}>
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] border-2 border-black">
+                  <Image src={service.coverImage} alt={service.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+                  <span className="absolute top-4 left-4 rounded-full bg-[#ffd447] border-2 border-black px-4 py-2 text-sm font-bold">0{index + 1}</span>
+                </div>
+                <div className="p-2 pt-6 flex gap-6 justify-between items-end">
+                  <div><div className="flex items-center gap-2 text-sm font-semibold mb-3"><Clock size={16} />{service.delivery}</div><h2 className="text-3xl md:text-4xl font-black tracking-tight group-hover:text-[#ff5d2e] transition-colors">{service.title}</h2><p className="mt-3 text-base leading-relaxed max-w-xl">{service.shortDescription}</p></div>
+                  <span className="shrink-0 w-14 h-14 rounded-full border-2 border-black bg-black text-white grid place-items-center transition-transform group-hover:rotate-45"><ArrowUpRight /></span>
+                </div>
+              </Link>
+            </motion.article>
+          ))}
         </div>
       </section>
     </>
