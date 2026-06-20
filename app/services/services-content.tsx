@@ -3,42 +3,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Clock } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { services } from '@/lib/data';
 
 export function ServicesPageContent() {
-  return (
-    <>
-      <section className="creative-hero pt-36 pb-20 px-6 overflow-hidden">
-        <div className="container mx-auto relative z-10">
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="eyebrow">Ce que nous faisons</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1 }} className="mega-title max-w-5xl">
-            Des idées qui prennent <span>forme.</span>
-          </motion.h1>
-          <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed">Chaque offre est une base modulable. Les contenus ci-dessous viennent d’un seul fichier de données : ajoutez un service, sa page existe automatiquement.</p>
-        </div>
-        <div className="shape shape-a" /><div className="shape shape-b" />
-      </section>
-
-      <section className="py-20 px-6 bg-[#fff8ef]">
-        <div className="container mx-auto grid md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <motion.article key={service.slug} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ delay: (index % 2) * .08 }} whileHover={{ y: -8, rotateX: 1.5, rotateY: index % 2 ? -1.5 : 1.5 }} className="service-card-premium group">
-              <Link href={`/services/${service.slug}`} className="block h-full" aria-label={`Découvrir ${service.title}`}>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] border-2 border-black">
-                  <Image src={service.coverImage} alt={service.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-                  <span className="absolute top-4 left-4 rounded-full bg-[#ffd447] border-2 border-black px-4 py-2 text-sm font-bold">0{index + 1}</span>
-                </div>
-                <div className="p-2 pt-6 flex gap-6 justify-between items-end">
-                  <div><div className="flex items-center gap-2 text-sm font-semibold mb-3"><Clock size={16} />{service.delivery}</div><h2 className="text-3xl md:text-4xl font-black tracking-tight group-hover:text-[#ff5d2e] transition-colors">{service.title}</h2><p className="mt-3 text-base leading-relaxed max-w-xl">{service.shortDescription}</p></div>
-                  <span className="shrink-0 w-14 h-14 rounded-full border-2 border-black bg-black text-white grid place-items-center transition-transform group-hover:rotate-45"><ArrowUpRight /></span>
-                </div>
-              </Link>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-    </>
-  );
+  return <main className="bg-[#fff8ef] text-[#171717]">
+    <section className="pt-40 pb-24 px-6 border-b border-black/15">
+      <div className="container mx-auto grid lg:grid-cols-2 gap-8 items-end">
+        <motion.div initial={{opacity:0,y:30}} animate={{opacity:1,y:0}}><p className="eyebrow mb-5">Expertises</p><h1 className="text-[clamp(3.5rem,8vw,7.5rem)] leading-[.88] tracking-[-.055em]">Des solutions<br/>bien pensées.</h1></motion.div>
+        <p className="max-w-md text-base leading-relaxed lg:justify-self-end text-black/65">Des accompagnements construits autour de vos objectifs. Chaque offre est modulable et mène vers une page complète.</p>
+      </div>
+    </section>
+    <section className="px-6">
+      <div className="container mx-auto">{services.map((service,index)=><motion.article key={service.slug} initial={{opacity:0,y:45}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-12%'}} className="group grid lg:grid-cols-[90px_1fr_1.15fr] gap-6 lg:gap-12 py-12 md:py-16 border-b border-black/20 items-center">
+        <span className="text-xs tracking-[.2em] self-start pt-2">0{index+1}</span>
+        <div><p className="text-xs uppercase tracking-[.16em] text-black/50 mb-4">{service.delivery}</p><h2 className="text-4xl md:text-6xl tracking-[-.04em] leading-none">{service.title}</h2><p className="max-w-md mt-5 text-sm md:text-base leading-relaxed text-black/60">{service.shortDescription}</p><Link href={`/services/${service.slug}`} className="inline-flex items-center gap-3 mt-7 text-sm font-semibold border-b border-black pb-1">Voir le service <ArrowUpRight size={17}/></Link></div>
+        <Link href={`/services/${service.slug}`} className="relative block aspect-[16/9] overflow-hidden rounded-[4px]" aria-label={service.title}><Image src={service.coverImage} alt={service.title} fill sizes="(max-width:1024px) 100vw, 55vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"/><span className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"/></Link>
+      </motion.article>)}</div>
+    </section>
+    <section className="py-28 px-6"><div className="container mx-auto text-center"><p className="text-sm uppercase tracking-[.18em]">Un besoin particulier ?</p><Link href="/devis" className="inline-flex mt-6 text-3xl md:text-5xl border-b border-black">Parlons de votre projet</Link></div></section>
+  </main>;
 }

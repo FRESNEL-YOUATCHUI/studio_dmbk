@@ -1,168 +1,34 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { slideUp, staggerContainer, staggerItem } from '@/lib/animations';
+import { AnimatePresence, motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projects, categories } from '@/lib/data';
-import { cn } from '@/lib/utils';
 
-const categoryLabels: Record<string, string> = {
-  branding: 'Branding',
-  'social-media': 'Social Media',
-  'site-web': 'Site Web',
-  'ui-ux': 'UI/UX',
-};
+const labels: Record<string,string> = { branding:'Branding','social-media':'Social Media','site-web':'Site Web','ui-ux':'UX/UI' };
 
 export function PortfolioPageContent() {
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  const filteredProjects =
-    activeFilter === 'all'
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
-
-  return (
-    <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pb-24 bg-brand-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={slideUp}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 bg-brand-gold/10 text-brand-gold text-sm font-medium rounded-full mb-6">
-              Portfolio
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display text-brand-black mb-6">
-              Nos{' '}
-              <span className="text-brand-gold">réalisations</span>
-            </h1>
-            <p className="text-lg text-brand-gray leading-relaxed max-w-2xl mx-auto">
-              Découvrez une sélection de projets qui illustrent notre expertise et notre créativité au service de nos clients.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Filters */}
-      <section className="pb-8 bg-brand-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-3 md:gap-4"
-          >
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveFilter(category.id)}
-                className={cn(
-                  'px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300',
-                  activeFilter === category.id
-                    ? 'bg-brand-black text-brand-white'
-                    : 'bg-transparent text-brand-gray border border-gray-200 hover:border-brand-gold hover:text-brand-black'
-                )}
-              >
-                {category.label}
-              </button>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Portfolio Grid */}
-      <section className="py-12 pb-24 bg-brand-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
-                  className={index % 5 === 0 ? 'md:col-span-2 md:row-span-2' : ''}
-                >
-                  <Link href={`/portfolio/${project.slug}`} className="block group">
-                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] lg:aspect-auto lg:h-full">
-                      <Image
-                        src={project.thumbnail}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/30 to-transparent" />
-
-                      {/* Content */}
-                      <div className="absolute inset-0 p-6 flex flex-col justify-end transition-all duration-500 group-hover:from-brand-black/90">
-                        <span className="text-brand-gold text-xs font-medium uppercase tracking-wider mb-2">
-                          {categoryLabels[project.category]}
-                        </span>
-                        <h3 className="text-white text-xl md:text-2xl font-display mb-2">
-                          {project.title}
-                        </h3>
-                        <p className="text-brand-gray text-sm mb-4">
-                          {project.client} — {project.year}
-                        </p>
-                        <div className="flex items-center text-brand-gold text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-                          Voir le projet
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* Empty State */}
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-brand-gray text-lg">
-                Aucun projet dans cette catégorie pour le moment.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-brand-gold">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-display text-brand-black mb-6">
-              Prêt à lancer votre projet ?
-            </h2>
-            <p className="text-brand-black/70 max-w-xl mx-auto mb-8">
-              Discutons de votre vision et créons ensemble quelque chose d&apos;exceptionnel.
-            </p>
-            <Link
-              href="/devis"
-              className="inline-flex items-center px-8 py-4 bg-brand-black text-brand-white font-medium rounded-sm hover:bg-brand-gray transition-colors duration-300"
-            >
-              Obtenir un devis
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-    </>
-  );
+  const [filter,setFilter]=useState('all');
+  const scope=useRef<HTMLElement>(null);
+  const visible=filter==='all'?projects:projects.filter(p=>p.category===filter);
+  useLayoutEffect(()=>{
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx=gsap.context(()=>{
+      gsap.from('.portfolio-intro > *',{y:50,opacity:0,duration:.9,stagger:.12,ease:'power3.out'});
+      gsap.to('.portfolio-intro',{y:70,ease:'none',scrollTrigger:{trigger:'.portfolio-intro',start:'top top',end:'bottom top',scrub:.8}});
+    },scope);
+    return ()=>ctx.revert();
+  },[]);
+  return <main ref={scope} className="bg-[#f8f7f3] min-h-screen">
+    <section className="portfolio-intro pt-40 pb-20 px-6"><div className="container mx-auto text-center"><p className="text-[11px] uppercase tracking-[.28em] mb-6">Sélection de projets</p><h1 className="text-[clamp(4rem,12vw,11rem)] leading-[.8] tracking-[-.065em]">PORTFOLIO</h1><p className="text-sm md:text-base text-black/55 max-w-md mx-auto mt-9">Identités, campagnes et expériences numériques façonnées avec attention.</p></div></section>
+    <section className="sticky top-[72px] z-20 bg-[#f8f7f3]/90 backdrop-blur-md py-5 px-6 border-y border-black/10"><div className="container mx-auto flex justify-center flex-wrap gap-x-7 gap-y-3">{categories.map(c=><button key={c.id} onClick={()=>setFilter(c.id)} className={`text-xs uppercase tracking-[.14em] pb-1 transition-colors ${filter===c.id?'text-black border-b border-black':'text-black/40 hover:text-black'}`}>{c.id==='ui-ux'?'UX/UI':c.label}</button>)}</div></section>
+    <section className="px-3 md:px-6 py-10 md:py-16"><div className="container mx-auto columns-1 md:columns-2 lg:columns-3 gap-3 md:gap-5">
+      <AnimatePresence mode="popLayout">{visible.map((project,index)=><motion.article layout key={project.id} initial={{opacity:0,y:35,scale:.98}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,scale:.96}} transition={{duration:.55,ease:[.22,1,.36,1]}} className="break-inside-avoid mb-3 md:mb-5 group">
+        <Link href={`/portfolio/${project.slug}`} className="block"><div className={`relative overflow-hidden bg-neutral-200 ${index%5===0?'aspect-[4/5]':index%3===0?'aspect-square':'aspect-[4/3]'}`}><Image src={project.thumbnail} alt={project.title} fill sizes="(max-width:768px) 100vw, 34vw" className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]"/><div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"/><div className="absolute inset-x-0 bottom-0 p-5 text-white translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"><h2 className="text-2xl">{project.title}</h2><p className="text-xs mt-1 uppercase tracking-[.13em]">{labels[project.category]} · {project.year}</p></div></div><div className="flex justify-between gap-4 py-3 md:hidden"><h2 className="text-lg">{project.title}</h2><span className="text-xs text-black/50">{project.year}</span></div></Link>
+      </motion.article>)}</AnimatePresence>
+    </div></section>
+  </main>;
 }

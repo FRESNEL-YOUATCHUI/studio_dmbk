@@ -13,10 +13,10 @@ const footerLinks = {
     { href: '/contact', label: 'Contact' },
   ],
   services: [
-    { href: '/services#pack-visuel', label: 'Pack Visuel' },
-    { href: '/services#identite-visuelle', label: 'Identité Visuelle' },
-    { href: '/services#community-management', label: 'Community Management' },
-    { href: '/services#site-web', label: 'Site Web' },
+    { href: '/services/pack-visuel', label: 'Pack Visuel' },
+    { href: '/services/identite-visuelle', label: 'Identité Visuelle' },
+    { href: '/services/community-management', label: 'Community Management' },
+    { href: '/services/site-web', label: 'Site Web' },
   ],
   social: [
     { href: 'https://instagram.com', label: 'Instagram', icon: Instagram },
