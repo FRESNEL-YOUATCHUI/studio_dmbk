@@ -15,8 +15,8 @@ export function Hero() {
         <p className="text-xl leading-relaxed max-w-2xl mt-8">Identités visuelles, contenus et expériences digitales pensés avec stratégie, couleur et juste ce qu’il faut d’audace.</p>
         <div className="flex flex-wrap gap-4 mt-10"><Link href="/portfolio" className="creative-button">Voir les projets <ArrowRight/></Link><Link href="/devis" className="creative-button bg-[#ffd447]">Créer ensemble <ArrowRight/></Link></div>
       </motion.div>
-      <motion.div style={{y:visualY}} className="relative min-h-[550px] rounded-[40px] border-[3px] border-black bg-[#ffd447] p-7 shadow-[14px_14px_0_#171717] rotate-2">
-        <div className="relative h-full min-h-[490px] rounded-[30px] overflow-hidden border-[3px] border-black"><Image src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Équipe créative au travail" fill priority className="object-cover"/></div>
+      <motion.div style={{y:visualY}} className="relative min-h-[550px] rounded-[12px] border-2 border-black bg-[#ffd447] p-5 rotate-1">
+        <div className="relative h-full min-h-[510px] rounded-[6px] overflow-hidden border-2 border-black"><Image src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Équipe créative au travail" fill priority className="object-cover"/></div>
         <span className="absolute -left-8 top-12 w-24 h-24 rounded-full bg-[#ff8fab] border-[3px] border-black"/><span className="absolute -right-7 bottom-16 w-28 h-16 rounded-full bg-[#4d96ff] border-[3px] border-black -rotate-12"/>
       </motion.div>
     </div><div className="shape shape-a"/><div className="shape shape-b"/>

@@ -290,47 +290,6 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-24 md:py-32 bg-brand-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="text-brand-gold text-sm font-medium uppercase tracking-wider mb-4 block">
-              Notre parcours
-            </span>
-            <h2 className="text-3xl md:text-4xl font-display text-brand-black">
-              Une croissance constante
-            </h2>
-          </motion.div>
-
-          <div className="max-w-3xl mx-auto">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={item.year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative pl-8 pb-12 last:pb-0 border-l-2 border-brand-gold/30 last:border-l-0"
-              >
-                <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-brand-gold" />
-                <span className="text-brand-gold font-medium text-sm mb-1 block">
-                  {item.year}
-                </span>
-                <h3 className="text-xl font-display text-brand-black mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-brand-gray">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Team */}
       <section className="py-24 md:py-32 bg-brand-black text-brand-white">
         <div className="container mx-auto px-6">

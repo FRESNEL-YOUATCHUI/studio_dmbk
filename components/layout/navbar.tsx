@@ -36,14 +36,14 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           isScrolled
-            ? 'bg-brand-white/95 backdrop-blur-md shadow-sm py-4'
+            ? 'bg-brand-white/95 backdrop-blur-md border-b border-black/10 py-4'
             : 'bg-transparent py-6'
         )}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-display font-semibold text-brand-black tracking-tight">
+            <span className="text-2xl font-sans font-semibold text-brand-black tracking-tight">
               DMBK<span className="text-brand-gold">.</span>
             </span>
           </Link>

@@ -35,7 +35,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
-              <span className="text-3xl font-display font-semibold tracking-tight">
+              <span className="text-3xl font-sans font-semibold tracking-tight">
                 DMBK<span className="text-brand-gold">.</span>
               </span>
             </Link>
@@ -105,15 +105,15 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="text-brand-gold" />
-                <span className="text-brand-gray">+221 77 123 45 67</span>
+                <a href="tel:+221777017004" className="text-brand-gray">+221 77 701 70 04</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="text-brand-gold" />
                 <a
-                  href="mailto:contact@dmbkstudio.com"
+                  href="mailto:jjob86213@gmail.com"
                   className="text-brand-gray hover:text-brand-gold transition-colors"
                 >
-                  contact@dmbkstudio.com
+                  jjob86213@gmail.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">

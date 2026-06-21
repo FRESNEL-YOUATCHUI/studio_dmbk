@@ -21,20 +21,20 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Téléphone',
-    value: '+221 77 123 45 67',
-    href: 'tel:+221771234567',
+    value: '+221 77 701 70 04',
+    href: 'tel:+221777017004',
   },
   {
     icon: MessageCircle,
     label: 'WhatsApp',
-    value: '+221 77 123 45 67',
-    href: 'https://wa.me/221771234567',
+    value: '+221 77 701 70 04',
+    href: 'https://wa.me/221777017004',
   },
   {
     icon: Mail,
     label: 'Email',
-    value: 'contact@dmbkstudio.com',
-    href: 'mailto:contact@dmbkstudio.com',
+    value: 'jjob86213@gmail.com',
+    href: 'mailto:jjob86213@gmail.com',
   },
   {
     icon: MapPin,
@@ -65,8 +65,9 @@ export function ContactPageContent() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log('Form data:', data);
+    const subject = encodeURIComponent(`Nouveau contact — ${data.name}`);
+    const body = encodeURIComponent(`Nom : ${data.name}\nEmail : ${data.email}\n\nMessage :\n${data.message}`);
+    window.location.href = `mailto:jjob86213@gmail.com?subject=${subject}&body=${body}`;
     setIsSubmitting(false);
     setIsSubmitted(true);
   };

@@ -14,219 +14,28 @@ export interface Project {
   tags: string[];
 }
 
-export const projects: Project[] = [
-  {
-    id: '1',
-    slug: 'afrostyle-branding',
-    title: 'AfroStyle',
-    client: 'AfroStyle Fashion',
-    category: 'branding',
-    year: '2024',
-    thumbnail: 'https://images.pexels.com/photos/1536679/pexels-photo-1536679.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/1536679/pexels-photo-1536679.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/5709661/pexels-photo-5709661.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'AfroStyle Fashion est une marque de prêt-à-porter africain contemporain qui souhaitait se repositionner sur le marché international.',
-    mission: 'Créer une identité visuelle moderne qui célèbre l\'héritage africain tout en touchant une audience internationale.',
-    solution: 'Nous avons développé une identité complète avec des motifs inspirés des textiles traditionnels, une palette de couleurs riches et une typographie élégante.',
-    results: [
-      'Augmentation de 150% des ventes en ligne',
-      'Présence dans 3 nouveaux marchés internationaux',
-      'Reconnaissance de marque renforcée',
-    ],
-    tags: ['Logo', 'Charte graphique', 'Stationery', 'Packaging'],
-  },
-  {
-    id: '2',
-    slug: 'techstart-website',
-    title: 'TechStart Africa',
-    client: 'TechStart Africa',
-    category: 'site-web',
-    year: '2024',
-    thumbnail: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'TechStart Africa est une plateforme de formation en ligne dédiée aux développeurs africains.',
-    mission: 'Concevoir un site web moderne et performant qui convertit les visiteurs en apprenants.',
-    solution: 'Un site web responsive avec une UX optimisée, un tunnel de conversion efficace et une intégration complète de la plateforme LMS.',
-    results: [
-      'Taux de conversion de 12%',
-      'Plus de 5000 inscriptions la première année',
-      'Temps de chargement sous 2 secondes',
-    ],
-    tags: ['Web Design', 'Développement', 'UX/UI', 'LMS'],
-  },
-  {
-    id: '3',
-    slug: 'savannah-social',
-    title: 'Savannah Coffee',
-    client: 'Savannah Coffee Co.',
-    category: 'social-media',
-    year: '2024',
-    thumbnail: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/4105496/pexels-photo-4105496.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/4105455/pexels-photo-4105455.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'Savannah Coffee Co. est une marque de café éthique sourcé directement des planteurs africains.',
-    mission: 'Développer une stratégie social media qui raconte l\'histoire du café africain et engage une communauté passionnée.',
-    solution: 'Une stratégie de contenu visuelle avec des photos lifestyle, des vidéos de coulisses et des collaborations avec des influenceurs.',
-    results: [
-      'Croissance de 300% des abonnés Instagram',
-      'Engagement moyen de 8%',
-      'Campagne virale avec 2M d\'impressions',
-    ],
-    tags: ['Instagram', 'Facebook', 'Contenu', 'Stratégie'],
-  },
-  {
-    id: '4',
-    slug: 'zenith-app',
-    title: 'Zenith Banking App',
-    client: 'Zenith Bank',
-    category: 'ui-ux',
-    year: '2023',
-    thumbnail: 'https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'Zenith Bank souhaitait moderniser son application mobile banking pour une meilleure expérience utilisateur.',
-    mission: 'Redesigner l\'interface pour la rendre intuitive, moderne et accessible à tous les profils d\'utilisateurs.',
-    solution: 'Un design system complet avec des parcours utilisateur simplifiés, des animations fluides et une accessibilité renforcée.',
-    results: [
-      'Note App Store passée de 3.2 à 4.7',
-      'Réduction de 40% du taux de désabonnement',
-      'Prix de l\'innovation bancaire 2023',
-    ],
-    tags: ['Mobile', 'UI/UX', 'Banking', 'Design System'],
-  },
-  {
-    id: '5',
-    slug: 'ngonie-branding',
-    title: 'Ngonee Cosmetics',
-    client: 'Ngonee Cosmetics',
-    category: 'branding',
-    year: '2023',
-    thumbnail: 'https://images.pexels.com/photos/3685563/pexels-photo-3685563.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/3685563/pexels-photo-3685563.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/3756025/pexels-photo-3756025.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/3685520/pexels-photo-3685520.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'Ngonee Cosmetics est une marque de cosmétiques naturels africains ciblant les femmes modernes.',
-    mission: 'Créer une identité visuelle luxueuse qui reflète l\'authenticité et la qualité des produits.',
-    solution: 'Une identité premium avec des illustrations botaniques, une palette de couleurs naturelles et un packaging élégant.',
-    results: [
-      'Lancement réussi dans 50 boutiques',
-      'Reconnaissance internationale',
-      'Collaboration avec Sephora Africa',
-    ],
-    tags: ['Logo', 'Packaging', 'Branding', 'Print'],
-  },
-  {
-    id: '6',
-    slug: 'bantou-events',
-    title: 'Bantou Events',
-    client: 'Bantou Events',
-    category: 'site-web',
-    year: '2023',
-    thumbnail: 'https://images.pexels.com/photos/1183216/pexels-photo-1183216.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/1183216/pexels-photo-1183216.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/169189/pexels-photo-169189.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'Bantou Events est une agence événementielle spécialisée dans les mariages et événements corporatifs.',
-    mission: 'Créer un site vitrine impressionnant qui met en valeur leur portfolio et facilite les prises de contact.',
-    solution: 'Un site web immersif avec des effets de parallax, une galerie de projets dynamique et un système de devis en ligne.',
-    results: [
-      'Augmentation de 200% des demandes de devis',
-      'Temps moyen sur site de 4 minutes',
-      'Taux de rebond réduit à 25%',
-    ],
-    tags: ['Web Design', 'Portfolio', 'Animation', 'Parallax'],
-  },
-  {
-    id: '7',
-    slug: 'moringa-social',
-    title: 'Moringa Life',
-    client: 'Moringa Life',
-    category: 'social-media',
-    year: '2024',
-    thumbnail: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/4199098/pexels-photo-4199098.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/4226896/pexels-photo-4226896.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'Moringa Life est une marque de compléments alimentaires à base de moringa, superfood africaine.',
-    mission: 'Lancer la marque sur les réseaux sociaux avec une stratégie de contenu impactante.',
-    solution: 'Stratégie éducative avec des infographies, témoignages clients et partenariats avec des influenceurs bien-être.',
-    results: [
-      '50K abonnés en 6 mois',
-      'Ventes multipliées par 5',
-      'Communauté engagée de 15K membres',
-    ],
-    tags: ['Lancement', 'Stratégie', 'Influence', 'Contenu'],
-  },
-  {
-    id: '8',
-    slug: 'ecobank-dashboard',
-    title: 'EcoBank Enterprise',
-    client: 'EcoBank',
-    category: 'ui-ux',
-    year: '2024',
-    thumbnail: 'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: [
-      'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
-    context: 'EcoBank souhaitait moderniser son portail entreprise pour une meilleure gestion des comptes professionnels.',
-    mission: 'Redesigner le dashboard pour offrir une expérience fluide et des insights actionable.',
-    solution: 'Une interface moderne avec des visualisations de données intuitives, des rapports personnalisables et des notifications intelligentes.',
-    results: [
-      'Satisfaction client de 92%',
-      'Réduction de 60% des appels support',
-      'Adoption de 85% par les clients entreprise',
-    ],
-    tags: ['Dashboard', 'Data Viz', 'Enterprise', 'Fintech'],
-  },
-];
+const img = (id: string) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1600`;
 
-export const categories = [
-  { id: 'all', label: 'Tout' },
-  { id: 'branding', label: 'Branding' },
-  { id: 'social-media', label: 'Social Media' },
-  { id: 'site-web', label: 'Site Web' },
-  { id: 'ui-ux', label: 'UI/UX' },
-];
+const seeds = [
+  { slug: 'e-drive', title: 'E-Drive', client: 'E-Drive', year: '2025', category: 'branding', photo: '9800029', context: 'Description à venir.', mission: 'Créer une identité visuelle distinctive pour un acteur de la mobilité électrique.', solution: 'Direction artistique, logotype et système graphique pensés pour les usages numériques et physiques.', tags: ['Direction artistique', 'Logotype', 'Identité visuelle'] },
+  { slug: 'le-cliche-by-ffhl', title: 'Le Cliché by FFHL', client: 'Le Cliché by FFHL', year: '2025', category: 'branding', photo: '3379943', context: 'Description à venir.', mission: 'Construire une signature élégante pour un studio photographique contemporain.', solution: 'Une identité éditoriale sobre mettant les images et le regard du studio au premier plan.', tags: ['Branding', 'Art direction', 'Photographie'] },
+  { slug: 'repi-farm', title: 'Repi Farm', client: 'Repi Farm', year: '2025', category: 'branding', photo: '2132250', context: 'Description à venir.', mission: 'Donner à la marque agricole un univers authentique, moderne et accessible.', solution: 'Un langage visuel organique conçu pour le packaging, le digital et la signalétique.', tags: ['Identité visuelle', 'Packaging', 'Illustration'] },
+  { slug: 'obsidian-cybersecurite', title: 'Obsidian', client: 'Obsidian', year: '2025', category: 'branding', photo: '5380642', context: 'Obsidian est une agence de cybersécurité qui accompagne les organisations dans la protection de leurs systèmes et de leurs données.', mission: 'Exprimer la précision, la confiance et la maîtrise technologique sans tomber dans les codes visuels génériques du secteur.', solution: 'Une identité sombre et structurée, portée par une typographie nette et un système graphique modulaire.', tags: ['Stratégie de marque', 'Logotype', 'Système graphique'] },
+  { slug: 'ciel-et-sel', title: 'Ciel & Sel', client: 'Ciel & Sel', year: '2025', category: 'branding', photo: '262978', context: 'Ciel & Sel est un restaurant gastronomique étoilé où la cuisine, la matière et le geste composent une expérience sensible.', mission: 'Créer une identité raffinée qui évoque la gastronomie sans surcharge décorative.', solution: 'Un univers éditorial délicat, déployé sur les menus, la papeterie et les supports numériques.', tags: ['Identité visuelle', 'Édition', 'Art de la table'] },
+  { slug: 'helix', title: 'Helix', client: 'Helix', year: '2025', category: 'branding', photo: '3822622', context: 'Helix développe une approche douce de la santé mentale et de la méditation.', mission: 'Créer un espace de marque rassurant, inclusif et contemporain.', solution: 'Une palette apaisante et un système visuel fluide accompagnent les contenus de soin et de méditation.', tags: ['Branding', 'Bien-être', 'Direction artistique'] },
+  { slug: 'volta-studio', title: 'Volta Studio', client: 'Volta Studio', year: '2025', category: 'branding', photo: '157811', context: 'Volta Studio est un cabinet d’architecture et de design d’intérieur.', mission: 'Traduire la rigueur architecturale et la sensibilité du studio dans une identité pérenne.', solution: 'Une grille précise, une signature typographique et un traitement photographique centré sur l’espace.', tags: ['Identité visuelle', 'Architecture', 'Édition'] },
+  { slug: 'fragment-magazine', title: 'Frag·ment', client: 'Frag·ment', year: '2025', category: 'branding', photo: '590493', context: 'Frag·ment est un magazine culturel indépendant qui explore les scènes, idées et voix émergentes.', mission: 'Concevoir une identité éditoriale capable de se renouveler à chaque numéro.', solution: 'Un système typographique radical et flexible, adapté à l’imprimé comme aux formats sociaux.', tags: ['Design éditorial', 'Typographie', 'Identité visuelle'] },
+  { slug: 'estm-rentree-2025', title: 'ESTM — Rentrée 2025', client: 'ESTM', year: '2025', category: 'social-media', photo: '267885', context: 'Campagne de communication conçue pour la rentrée académique 2025 de l’ESTM.', mission: 'Rendre l’offre de formation visible et créer une campagne immédiatement reconnaissable.', solution: 'Un territoire visuel énergique décliné en affichage, digital et réseaux sociaux.', tags: ['Campagne', 'Social media', 'Affichage'] },
+  { slug: 'estm-rentree-2026', title: 'ESTM — Rentrée 2026', client: 'ESTM', year: '2026', category: 'social-media', photo: '289737', context: 'Nouvelle campagne de rentrée de l’ESTM, construite pour prolonger la reconnaissance acquise en 2025.', mission: 'Faire évoluer la campagne tout en conservant une filiation visuelle forte.', solution: 'Une composition plus éditoriale, des messages courts et un système de déclinaisons multi-format.', tags: ['Campagne 360°', 'Direction artistique', 'Social media'] },
+] as const;
 
-export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
-}
+export const projects: Project[] = seeds.map((project, index) => {
+  const main = img(project.photo);
+  const alternates = [img(['3182812','4348404','196644','3184291'][index % 4]), img(['3183150','4064835','6476589','3861969'][index % 4])];
+  return { ...project, id: String(index + 1), category: project.category as Project['category'], thumbnail: main, images: [main, ...alternates], tags: [...project.tags], results: [] };
+});
 
-export function getRelatedProjects(currentSlug: string, limit: number = 3): Project[] {
-  const current = getProjectBySlug(currentSlug);
-  if (!current) return [];
-
-  return projects
-    .filter((p) => p.slug !== currentSlug && p.category === current.category)
-    .slice(0, limit);
-}
-
-export function getAdjacentProjects(currentSlug: string) {
-  const index = projects.findIndex((project) => project.slug === currentSlug);
-  if (index < 0) return { previous: undefined, next: undefined };
-  return {
-    previous: projects[(index - 1 + projects.length) % projects.length],
-    next: projects[(index + 1) % projects.length],
-  };
-}
+export const categories = [{ id: 'all', label: 'Tout' }, { id: 'branding', label: 'Identité visuelle' }, { id: 'social-media', label: 'Campagnes' }];
+export const getProjectBySlug = (slug: string) => projects.find((project) => project.slug === slug);
+export function getRelatedProjects(currentSlug: string, limit = 3) { const current = getProjectBySlug(currentSlug); return current ? projects.filter((p) => p.slug !== currentSlug && p.category === current.category).slice(0, limit) : []; }
+export function getAdjacentProjects(currentSlug: string) { const index = projects.findIndex((p) => p.slug === currentSlug); return index < 0 ? { previous: undefined, next: undefined } : { previous: projects[(index - 1 + projects.length) % projects.length], next: projects[(index + 1) % projects.length] }; }

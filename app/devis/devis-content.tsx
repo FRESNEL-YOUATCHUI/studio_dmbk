@@ -31,10 +31,10 @@ const services = [
 ];
 
 const budgets = [
-  { id: 'less-100k', label: 'Moins de 100 000 FCFA' },
-  { id: '100k-300k', label: '100 000 à 300 000 FCFA' },
-  { id: '300k-1m', label: '300 000 à 1 000 000 FCFA' },
-  { id: 'more-1m', label: 'Plus de 1 000 000 FCFA' },
+  { id: 'less-500', label: 'Moins de 500 €' },
+  { id: '500-1500', label: '500 € à 1 500 €' },
+  { id: '1500-3000', label: '1 500 € à 3 000 €' },
+  { id: 'more-3000', label: 'Plus de 3 000 €' },
 ];
 
 export function QuotePageContent() {
@@ -52,9 +52,9 @@ export function QuotePageContent() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log('Form data:', data);
+    const subject = encodeURIComponent(`Demande de devis — ${data.name}`);
+    const body = encodeURIComponent(`Nom : ${data.name}\nEntreprise : ${data.company || 'Non renseignée'}\nTéléphone : ${data.phone}\nEmail : ${data.email}\nService : ${data.service}\nBudget : ${data.budget}\n\nProjet :\n${data.description}`);
+    window.location.href = `mailto:jjob86213@gmail.com?subject=${subject}&body=${body}`;
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
@@ -156,7 +156,7 @@ export function QuotePageContent() {
                             'w-full px-4 py-3 rounded-sm border bg-brand-white text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all',
                             errors.phone ? 'border-red-500' : 'border-gray-200'
                           )}
-                          placeholder="+221 77 123 45 67"
+                          placeholder="+221 77 701 70 04"
                         />
                         {errors.phone && (
                           <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
