@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/cursor';
+import { usePathname } from 'next/navigation';
+import { BrandLogo } from '@/components/ui/brand-logo';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
@@ -16,6 +18,7 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -27,6 +30,7 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (pathname.startsWith('/admin')) return null;
   return (
     <>
       <motion.header
@@ -42,10 +46,8 @@ export function Navbar() {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-sans font-semibold text-brand-black tracking-tight">
-              DMBK<span className="text-brand-gold">.</span>
-            </span>
+          <Link href="/" aria-label="ID Craft — Accueil">
+            <BrandLogo />
           </Link>
 
           {/* Desktop Navigation */}
@@ -56,7 +58,7 @@ export function Navbar() {
                 href={link.href}
                 className="relative group"
               >
-                <span className="text-sm font-medium text-brand-gray hover:text-brand-black transition-colors duration-300">
+                <span className="font-dusan text-lg text-[#1a132d] hover:text-[#eb593b] transition-colors duration-300">
                   {link.label}
                 </span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full" />

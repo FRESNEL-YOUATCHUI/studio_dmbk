@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { BrandLogo } from '@/components/ui/brand-logo';
 
 const footerLinks = {
   navigation: [
@@ -26,18 +28,18 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
+  if (pathname.startsWith('/admin')) return null;
   return (
     <footer className="bg-brand-black text-brand-white">
       <div className="container mx-auto px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <span className="text-3xl font-sans font-semibold tracking-tight">
-                DMBK<span className="text-brand-gold">.</span>
-              </span>
+            <Link href="/" className="inline-block mb-6" aria-label="ID Craft — Accueil">
+              <BrandLogo size="footer" inverted />
             </Link>
             <p className="text-brand-gray leading-relaxed mb-6">
               Studio créatif africain spécialisé en design graphique, branding et création de sites web.
@@ -130,7 +132,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-brand-gray text-sm">
-            &copy; {currentYear} DMBK Studio. Tous droits réservés.
+            &copy; {currentYear} ID Craft. Tous droits réservés.
           </p>
           <div className="flex space-x-6 text-sm text-brand-gray">
             <Link href="#" className="hover:text-brand-gold transition-colors">

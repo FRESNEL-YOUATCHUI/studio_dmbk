@@ -15,8 +15,8 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://dmbkstudio.com'),
   title: {
-    default: 'DMBK Studio | Studio Créatif Africain Premium',
-    template: '%s | DMBK Studio',
+    default: 'ID Craft | Studio Créatif Africain',
+    template: '%s | ID Craft',
   },
   description: 'Studio créatif africain spécialisé en design graphique, branding, community management et création de sites web. Identités visuelles et expériences digitales premium.',
   keywords: [
@@ -31,27 +31,27 @@ export const metadata: Metadata = {
     'Sénégal',
     'Dakar',
   ],
-  authors: [{ name: 'DMBK Studio' }],
-  creator: 'DMBK Studio',
+  authors: [{ name: 'ID Craft' }],
+  creator: 'ID Craft',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://dmbkstudio.com',
-    siteName: 'DMBK Studio',
-    title: 'DMBK Studio | Studio Créatif Africain Premium',
+    siteName: 'ID Craft',
+    title: 'ID Craft | Studio Créatif Africain',
     description: 'Studio créatif africain spécialisé en design graphique, branding, community management et création de sites web.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'DMBK Studio - Studio Créatif Africain',
+        alt: 'ID Craft - Votre identité faite sur mesure',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DMBK Studio | Studio Créatif Africain Premium',
+    title: 'ID Craft | Studio Créatif Africain',
     description: 'Studio créatif africain spécialisé en design graphique, branding, community management et création de sites web.',
     images: ['/og-image.jpg'],
     creator: '@dmbkstudio',

@@ -6,9 +6,9 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { projects } from '@/lib/data';
+import type { Project } from '@/lib/data';
 
-export function PortfolioPageContent() {
+export function PortfolioPageContent({ projects }: { projects: Project[] }) {
   const scope = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);

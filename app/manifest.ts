@@ -1,7 +1,7 @@
 export default function manifest() {
   return {
-    name: 'DMBK Studio',
-    short_name: 'DMBK',
+    name: 'ID Craft',
+    short_name: 'ID Craft',
     description: 'Studio créatif africain spécialisé en design graphique, branding et création de sites web.',
     start_url: '/',
     display: 'standalone',

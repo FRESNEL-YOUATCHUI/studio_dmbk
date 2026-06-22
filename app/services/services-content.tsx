@@ -4,9 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { services } from '@/lib/data';
+import type { Service } from '@/lib/data';
 
-export function ServicesPageContent() {
+export function ServicesPageContent({ services }: { services: Service[] }) {
   return <main className="bg-[#fff8ef] text-[#171717]">
     <section className="pt-40 pb-24 px-6 border-b border-black/15">
       <div className="container mx-auto grid lg:grid-cols-2 gap-8 items-end">

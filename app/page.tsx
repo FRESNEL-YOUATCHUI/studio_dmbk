@@ -4,13 +4,16 @@ import { PortfolioPreview } from '@/components/sections/portfolio-preview';
 import { WhyChooseUs } from '@/components/sections/why-us';
 import { CTASection } from '@/components/sections/cta';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
+import { getSiteContent } from '@/lib/content-store';
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic';
+export default async function HomePage() {
+  const { projects, services } = await getSiteContent();
   return (
     <>
       <Hero />
-      <ServicesPreview />
-      <PortfolioPreview />
+      <ServicesPreview services={services} />
+      <PortfolioPreview projects={projects} />
       <WhyChooseUs />
       <CTASection variant="dark" />
       <WhatsAppButton />

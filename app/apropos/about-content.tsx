@@ -41,7 +41,7 @@ const stats = [
 const timeline = [
   {
     year: '2019',
-    title: 'Création de DMBK Studio',
+    title: 'Création de ID Craft',
     description: 'Naissance du studio avec une vision : créer des designs africains de niveau international.',
   },
   {
@@ -157,7 +157,7 @@ export function AboutPageContent() {
                 variants={staggerItem}
                 className="text-brand-gray leading-relaxed mb-6"
               >
-                Fondé en 2019, DMBK Studio est né d&apos;une conviction : les entreprises africaines méritent des designs à la hauteur de leurs ambitions. Nous avons entrepris de créer un studio qui allie la richesse culturelle africaine aux standards internationaux de créativité.
+                Fondé en 2019, ID Craft est né d&apos;une conviction : les entreprises africaines méritent des designs à la hauteur de leurs ambitions. Nous avons entrepris de créer un studio qui allie la richesse culturelle africaine aux standards internationaux de créativité.
               </motion.p>
               <motion.p
                 variants={staggerItem}
