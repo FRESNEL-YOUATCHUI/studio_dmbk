@@ -320,7 +320,7 @@ export function QuotePageContent() {
                     Demande envoyée !
                   </h2>
                   <p className="text-brand-gray text-lg mb-8 max-w-md mx-auto">
-                    Merci pour votre demande. Notre équipe vous contactera sous 24h pour discuter de votre projet.
+                    Merci pour votre demande. Je vous contacterai sous 24h pour discuter de votre projet.
                   </p>
                   <Button
                     onClick={() => {

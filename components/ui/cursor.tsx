@@ -29,11 +29,11 @@ export function Button({
 
   const variants = {
     primary:
-      'bg-brand-black text-brand-white hover:bg-brand-gray',
+      'bg-[#eb593b] text-white hover:bg-[#d94218]',
     secondary:
-      'bg-brand-gold text-brand-white hover:bg-brand-gold-dark',
+      'bg-[#eb593b] text-white hover:bg-[#d94218]',
     outline:
-      'border-2 border-brand-black text-brand-black hover:bg-brand-black hover:text-brand-white',
+      'border-2 border-[#eb593b] text-[#eb593b] hover:bg-[#eb593b] hover:text-white',
     ghost:
       'text-brand-black hover:bg-brand-black/5',
   };

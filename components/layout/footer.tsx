@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
@@ -27,22 +28,48 @@ const footerLinks = {
   ],
 };
 
+const footerIcons = [
+  '/assets/footer-icons/delivery.png',
+  '/assets/footer-icons/design.png',
+  '/assets/footer-icons/support.png',
+  '/assets/footer-icons/solutions.png',
+];
+
 export function Footer() {
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
   if (pathname.startsWith('/admin')) return null;
+
   return (
-    <footer className="bg-brand-black text-brand-white">
-      <div className="container mx-auto px-6 py-16 md:py-20">
+    <footer className="relative overflow-hidden bg-[#fff6ca] text-[#1a132d] border-t border-[#1a132d]/10">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.08]">
+        {footerIcons.map((src, index) => (
+          <Image
+            key={src}
+            src={src}
+            alt=""
+            width={220}
+            height={220}
+            className="absolute object-contain"
+            style={{
+              left: `${8 + index * 24}%`,
+              top: index % 2 ? '46%' : '10%',
+              transform: `rotate(${index % 2 ? -10 : 8}deg)`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container relative mx-auto px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6" aria-label="ID Craft — Accueil">
-              <BrandLogo size="footer" inverted />
+            <Link href="/" className="inline-block mb-5" aria-label="ID Craft — Accueil">
+              <BrandLogo size="footer" />
             </Link>
-            <p className="text-brand-gray leading-relaxed mb-6">
-              Studio créatif africain spécialisé en design graphique, branding et création de sites web.
+            <p className="text-[#1a132d]/70 leading-relaxed mb-6">
+              Studio créatif freelance avec une équipe d’accompagnement jeune pour vos identités,
+              contenus et expériences digitales.
             </p>
             <div className="flex space-x-4">
               {footerLinks.social.map((social) => (
@@ -51,7 +78,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold transition-colors duration-300"
+                  className="w-10 h-10 rounded-full bg-[#eb593b] text-white flex items-center justify-center hover:bg-[#00b4d8] transition-colors duration-300"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -61,18 +88,14 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h4 className="text-sm font-medium uppercase tracking-wider text-brand-white mb-6">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-[#eb593b] mb-6">
               Navigation
             </h4>
             <ul className="space-y-3">
               {footerLinks.navigation.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-brand-gray hover:text-brand-gold transition-colors duration-300"
-                  >
+                  <Link href={link.href} className="text-[#1a132d]/70 hover:text-[#eb593b] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -80,18 +103,14 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h4 className="text-sm font-medium uppercase tracking-wider text-brand-white mb-6">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-[#eb593b] mb-6">
               Services
             </h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-brand-gray hover:text-brand-gold transition-colors duration-300"
-                  >
+                  <Link href={link.href} className="text-[#1a132d]/70 hover:text-[#eb593b] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -99,46 +118,40 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-sm font-medium uppercase tracking-wider text-brand-white mb-6">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-[#eb593b] mb-6">
               Contact
             </h4>
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
-                <Phone size={18} className="text-brand-gold" />
-                <a href="tel:+221777017004" className="text-brand-gray">+221 77 701 70 04</a>
+                <Phone size={18} className="text-[#00b4d8]" />
+                <a href="tel:+221777017004" className="text-[#1a132d]/70 hover:text-[#eb593b]">
+                  +221 77 701 70 04
+                </a>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail size={18} className="text-brand-gold" />
-                <a
-                  href="mailto:jjob86213@gmail.com"
-                  className="text-brand-gray hover:text-brand-gold transition-colors"
-                >
+                <Mail size={18} className="text-[#00b4d8]" />
+                <a href="mailto:jjob86213@gmail.com" className="text-[#1a132d]/70 hover:text-[#eb593b]">
                   jjob86213@gmail.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin size={18} className="text-brand-gold mt-1" />
-                <span className="text-brand-gray">
-                  Dakar, Sénégal<br />
-                  Abidjan, Côte d&apos;Ivoire
-                </span>
+                <MapPin size={18} className="text-[#00b4d8] mt-1" />
+                <span className="text-[#1a132d]/70">Partout dans le monde</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-brand-gray text-sm">
+        <div className="mt-16 pt-8 border-t border-[#1a132d]/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-[#1a132d]/65 text-sm">
             &copy; {currentYear} ID Craft. Tous droits réservés.
           </p>
-          <div className="flex space-x-6 text-sm text-brand-gray">
-            <Link href="#" className="hover:text-brand-gold transition-colors">
+          <div className="flex space-x-6 text-sm text-[#1a132d]/65">
+            <Link href="#" className="hover:text-[#eb593b] transition-colors">
               Mentions légales
             </Link>
-            <Link href="#" className="hover:text-brand-gold transition-colors">
+            <Link href="#" className="hover:text-[#eb593b] transition-colors">
               Politique de confidentialité
             </Link>
           </div>

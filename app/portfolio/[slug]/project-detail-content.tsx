@@ -26,7 +26,11 @@ function HorizontalProjectGallery({ images, title, onOpen }: { images: string[];
   return <section className="py-20 md:py-28 overflow-hidden border-y border-black/10 bg-[#efeee9]">
     <div className="px-6 mb-9 flex items-end justify-between gap-5"><div><p className="text-[10px] uppercase tracking-[.22em] text-black/45">Galerie en mouvement</p><h2 className="text-2xl md:text-3xl mt-3 font-medium">Autres réalisations</h2></div><p className="hidden md:block text-xs text-black/45">Survolez pour mettre en pause</p></div>
     <motion.div style={{ x, y: parallaxY }} className="flex w-max gap-4 will-change-transform" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      {loop.map((src, index) => <button key={`${src}-${index}`} onClick={() => onOpen(index % images.length)} className="relative w-[260px] h-[510px] md:w-[316px] md:h-[620px] shrink-0 overflow-hidden cursor-zoom-in group" aria-label={`Agrandir le visuel ${(index % images.length) + 1}`}><Image src={src} alt={`${title}, galerie ${(index % images.length) + 1}`} fill sizes="(max-width:768px) 260px, 316px" className="object-cover transition-transform duration-500 group-hover:scale-[1.045]"/></button>)}
+      {loop.map((src, index) => {
+        const phase = index % 3;
+        const isCenter = phase === 1;
+        return <button key={`${src}-${index}`} onClick={() => onOpen(index % images.length)} className="relative w-[316px] h-[620px] shrink-0 overflow-hidden cursor-zoom-in group will-change-transform" style={{ transform: `perspective(1200px) rotateY(${phase === 0 ? '-13deg' : phase === 2 ? '13deg' : '0deg'}) scale(${isCenter ? 1.02 : .92})`, filter: isCenter ? 'none' : 'brightness(.78) saturate(.9) blur(.25px)' }} aria-label={`Agrandir le visuel ${(index % images.length) + 1}`}><Image src={src} alt={`${title}, galerie ${(index % images.length) + 1}`} fill sizes="316px" className="object-cover transition-transform duration-500 group-hover:scale-[1.055]"/></button>;
+      })}
     </motion.div>
   </section>;
 }

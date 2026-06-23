@@ -39,7 +39,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Adresse',
-    value: 'Dakar, Sénégal\nAbidjan, Côte d\'Ivoire',
+    value: 'Partout dans le monde',
     href: null,
   },
 ];
@@ -164,23 +164,19 @@ export function ContactPageContent() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Zone de disponibilité */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="mt-12 relative aspect-video rounded-lg overflow-hidden bg-brand-gray/20"
+                className="mt-12 rounded-lg overflow-hidden bg-[#fff6ca] border border-[#1a132d]/10 p-8"
               >
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247742.19344742647!2d-17.482965374563984!3d14.726919278361844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec10e7f1e54b7e7%3A0x8c8e3d7a0b4f7b4e!2sDakar%2C%20Senegal!5e0!3m2!1sen!2sfr!4v1710000000000!5m2!1sen!2sfr"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Localisation DMBK Studio"
-                />
+                <p className="text-sm uppercase tracking-[.2em] text-[#00b4d8] mb-3">
+                  Disponible à distance
+                </p>
+                <p className="text-[#1a132d]/70 leading-relaxed">
+                  Les échanges, devis et livraisons peuvent se faire en ligne, partout dans le monde.
+                </p>
               </motion.div>
             </motion.div>
 
