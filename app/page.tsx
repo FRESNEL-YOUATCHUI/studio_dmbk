@@ -6,7 +6,7 @@ import { CTASection } from '@/components/sections/cta';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { getSiteContent } from '@/lib/content-store';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 export default async function HomePage() {
   const { projects, services } = await getSiteContent();
   return (

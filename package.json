@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "migrate:supabase": "node scripts/migrate-to-supabase.mjs",
+    "organize:supabase": "node --env-file=.env.local scripts/organize-supabase-project-media.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

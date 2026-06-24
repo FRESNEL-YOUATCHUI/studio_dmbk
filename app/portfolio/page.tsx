@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Découvrez nos projets : branding, social media, création de sites web et design UI/UX. Un portfolio qui illustre notre expertise créative.',
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 export default async function PortfolioPage() {
   const { projects } = await getSiteContent();
   return <PortfolioPageContent projects={projects} />;

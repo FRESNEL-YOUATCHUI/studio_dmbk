@@ -1,11 +1,9 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { Project } from '@/lib/data';
 
 function CoverflowShowcase({ projects }: { projects: Project[] }) {
@@ -80,41 +78,8 @@ function CoverflowShowcase({ projects }: { projects: Project[] }) {
 }
 
 export function PortfolioPageContent({ projects }: { projects: Project[] }) {
-  const scope = useRef<HTMLElement>(null);
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.work-row').forEach((row) => {
-        const media = row.querySelector('.work-media');
-        const image = row.querySelector('img');
-        gsap.fromTo(
-          media,
-          { clipPath: 'inset(0 0 100% 0)' },
-          {
-            clipPath: 'inset(0 0 0% 0)',
-            duration: 1.05,
-            ease: 'power4.out',
-            scrollTrigger: { trigger: row, start: 'top 86%' },
-          }
-        );
-        gsap.fromTo(
-          image,
-          { scale: 1.12, yPercent: -4 },
-          {
-            scale: 1,
-            yPercent: 4,
-            ease: 'none',
-            scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: 0.8 },
-          }
-        );
-      });
-    }, scope);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <main ref={scope} className="bg-[#f7f7f5] min-h-screen text-[#1a132d]">
+    <main className="bg-[#f7f7f5] min-h-screen text-[#1a132d]">
       <section className="pt-40 md:pt-48 pb-14 px-6 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -131,8 +96,12 @@ export function PortfolioPageContent({ projects }: { projects: Project[] }) {
       <section className="px-5 md:px-8 py-20 md:py-28">
         <div className="max-w-4xl mx-auto space-y-7 md:space-y-10">
           {projects.map((project, index) => (
-            <article
+            <motion.article
               key={project.slug}
+              initial={{ opacity: 0, y: 36 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-12%' }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               className="work-row grid grid-cols-[minmax(120px,42vw)_minmax(0,1fr)] md:grid-cols-[330px_1fr] gap-4 md:gap-10 items-center"
             >
               <Link
@@ -140,13 +109,21 @@ export function PortfolioPageContent({ projects }: { projects: Project[] }) {
                 className="work-media relative block aspect-square overflow-hidden bg-neutral-200 group"
                 aria-label={`Voir ${project.title}`}
               >
-                <Image
-                  src={project.thumbnail}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width:768px) 42vw, 330px"
-                  className="object-cover will-change-transform transition-transform duration-700 group-hover:scale-[1.06]"
-                />
+                <motion.div
+                  className="absolute inset-0"
+                  initial={{ scale: 1.08 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width:768px) 42vw, 330px"
+                    className="object-cover will-change-transform transition-transform duration-700 group-hover:scale-[1.06]"
+                  />
+                </motion.div>
                 <span className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
               </Link>
               <motion.div
@@ -168,7 +145,7 @@ export function PortfolioPageContent({ projects }: { projects: Project[] }) {
                   </span>
                 </Link>
               </motion.div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </section>
